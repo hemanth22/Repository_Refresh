@@ -23,11 +23,10 @@ script:
  - echo "Clean repository"
  - rm -rf ${SRC_REPO}/*
  - echo "Listing Output after above script"
- - echo "<br/>This repository is clean using Travis CI application." >> README.md
  - git remote
  - git config user.email ${EMAIL}
  - git config user.name ${USER}
- - git rm -r .
+ - git rm -rf .
  - git commit -m "Clean repository from Travis build  $TRAVIS_BUILD_NUMBER"
  - git push "https://${GITHUB_API_KEY}@${SRC_REPO}" ${BRANCH_NAME}
 #- git push "https://${GITHUB_API_KEY}@${GH_REPO}" ${BRANCH_NAME}
