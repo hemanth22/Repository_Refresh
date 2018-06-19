@@ -27,8 +27,10 @@ script:
  - git config user.email ${EMAIL}
  - git config user.name ${USER}
  - git rm -rf .
- - git commit -m "Clean repository from Travis build  $TRAVIS_BUILD_NUMBER"
- - git push "https://${GITHUB_API_KEY}@${SRC_REPO}" ${BRANCH_NAME}
+ - echo "<br/>Repository Refresh completed using Travis CI application." >> README.md
+ - git add README.md
+ - git commit -m "Repository Refresh from Travis build $TRAVIS_BUILD_NUMBER"
+ - git push "https://${GITHUB_API_KEY}@${GH_REPO}" ${BRANCH_NAME}
 #- git push "https://${GITHUB_API_KEY}@${GH_REPO}" ${BRANCH_NAME}
 
 after_success:
