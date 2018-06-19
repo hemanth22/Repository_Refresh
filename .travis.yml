@@ -20,15 +20,16 @@ script:
  - cd ${SRC_REPO}
  - echo "Checkout to branch repository"
  - git checkout ${BRANCH_NAME}
- - echo "Clean repository"
+ - echo "Refresh the repository"
  - rm -rf ${SRC_REPO}/*
  - echo "Listing Output after above script"
- - echo "<br/>This repository is clean using Travis CI application." >> README.md
  - git remote
  - git config user.email ${EMAIL}
  - git config user.name ${USER}
- - git rm -r .
- - git commit -m "Clean repository from Travis build  $TRAVIS_BUILD_NUMBER"
+ - git rm -rf .
+ - echo "<br/>Repository Refresh completed using Travis CI application." >> README.md
+ - git add README.md
+ - git commit -m "Repository Refresh from Travis build  $TRAVIS_BUILD_NUMBER"
  - git push "https://${GITHUB_API_KEY}@${SRC_REPO}" ${BRANCH_NAME}
 #- git push "https://${GITHUB_API_KEY}@${GH_REPO}" ${BRANCH_NAME}
 
